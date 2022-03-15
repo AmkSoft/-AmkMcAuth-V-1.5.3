@@ -1,0 +1,39 @@
+// What is Changed in this version (1.5.3)
+//
+// Final Bug-Fix from 1.5.3-BETA-1
+// 
+// java.lang.NullPointerException: Cannot invoke "com.mooo.amksoft.amkmcauth.AuthPlayer.getPlayer()" because "ap" is null
+// at com.mooo.amksoft.amkmcauth.AuthListener.sameName(AuthListener.java:298) ~[AmkMcAuth-1.5.2.jar:?]
+// When using Paper??, reported by vdl19. Quick fix: Set: Config.kickIfAlreadyOnline to true.
+// Program fix: added line: "if (ap == null) return; // Do nothing if ap is not found (null-pointer execption.)" 
+//
+// ------------------------------------------------------------------------------------------------------------------------
+//
+// What is Changed in this version (1.5.2)
+//
+// New-Features:
+// Register Password is now doing auto confirm.
+//   so, if player is using a space in the registered password treats it as the
+//   player typed it in twice as a sort of  confirm option. So the registered password 
+//   containing a space should have the same first and second part. This also implies 
+//   that now it is impossible to register a password containing a space character.
+//   If there is no space then the typed password is set as the registered password.
+// Added BCRYPT as password encryption (configurable in config.yml).
+//   If players Registers of changes his password it will be stored using the 
+//   Encryption Method configured in the config.yml config file.
+// Added setrecover command so players can recover their forgotten password using
+//   Quesion+Answer when they have not set their email address. Password recover 
+//   using email has priority over Question+Answer. If a player has set his email 
+//   address then the player cannot set the recovery Quesion+Answer. 
+// You have now full control over the command Aliases this plugin uses,
+//   just by editing the alias entries in the plugin.yml file in the jar file.
+// GodeMode On Join if WithInSession  (Grace-periode Disconnect/Connect) Enable/Disabled using config setting
+// This could be (mis)used as a pvp exploit (previous: disconnect+connect activated godmode) 
+//
+// Bug-Fix
+//
+// fixed the "AmkMcAuth' about their usage of System.out/err.print. Please use your plugin's logger instead" message
+// fixed the amkauth.requirelogin permission bug, amkmcauth was not using this permission and always asked to
+// 	register and/or login. Now, if you set the global require (login to play) to false you can use your permission
+//	plugin to check on certain players(groups) to having this permission to force register and/or login.
+  
